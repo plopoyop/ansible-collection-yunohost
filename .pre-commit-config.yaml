@@ -10,3 +10,11 @@ repos:
       - id: check-symlinks
       - id: check-yaml
       - id: detect-private-key
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.4
+    hooks:
+      - id: ruff
+        args: ["--fix", "./plugins/", "./tests/"]
+      - id: ruff-format
+        args: ["./plugins/", "./tests/"]
