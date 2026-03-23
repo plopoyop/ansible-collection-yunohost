@@ -11,11 +11,6 @@ tasks:
     desc: "Prepare development environment"
     cmds:
       - task: pre-commit
-      - mkdir -p ${ANSIBLE_GALAXY_ROLES_PATH}
-      - mkdir -p ${ANSIBLE_GALAXY_COLLECTIONS_PATH}
-      - ${DEVBOX_CONFIG_DIR}/install-kind-cloud.sh
-    generates:
-      - ${DEVBOX_PROJECT_ROOT}/.devbox/bin/cloud-provider-kind
 
   pre-commit:
     desc: "Install pre-commit hooks"
