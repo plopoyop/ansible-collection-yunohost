@@ -1,0 +1,13 @@
+---
+requires_ansible: ">=2.19.0"
+
+action_groups:
+  yunohost:
+    - yunohost_app
+    - yunohost_domain
+    - yunohost_domain_config
+    - yunohost_firewall
+    - yunohost_permission
+    - yunohost_postinstall
+    - yunohost_settings
+    - yunohost_user

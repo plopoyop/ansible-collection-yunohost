@@ -1,0 +1,28 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.17.0/.schema/devbox.schema.json",
+    "packages": [
+      "ansible-doctor@8.2.1",
+      "ansible-lint@25.8.2",
+      "git@2.53.0",
+      "go-task@3.48.0",
+      "podman@5.8.0",
+      "prek@0.3.5",
+      "python313Packages.ansible@13.3.0",
+      "python313Packages.molecule@25.12.0",
+      "python313Packages.molecule-plugins@23.5.3",
+      "python313Packages.pytest@8.3.5",
+      "python313Packages.pytest-ansible@25.12.0",
+      "python313Packages.ruff@0.15.0",
+      "yamllint@1.37.1"
+    ],
+    "shell": {
+      "init_hook": [
+        "echo 'Welcome to devbox!' > /dev/null"
+      ],
+      "scripts": {
+        "test": [
+          "ANSIBLE_COLLECTIONS_PATH=\"$(realpath ../..)\" python3 -m pytest tests/ -v"
+        ]
+      }
+    }
+  }

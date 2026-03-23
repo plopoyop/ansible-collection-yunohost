@@ -1,0 +1,7 @@
+---
+skip_list:
+  - yaml
+  # Role variables use yunohost_install_ and yunohost_configure_ prefixes
+  # for clarity and collision avoidance, even though the role directories
+  # are named install/ and configure/.
+  - var-naming[no-role-prefix]
