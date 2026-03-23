@@ -14,15 +14,5 @@
       "python313Packages.pytest-ansible@25.12.0",
       "python313Packages.ruff@0.15.0",
       "yamllint@1.37.1"
-    ],
-    "shell": {
-      "init_hook": [
-        "echo 'Welcome to devbox!' > /dev/null"
-      ],
-      "scripts": {
-        "test": [
-          "ANSIBLE_COLLECTIONS_PATH=\"$(realpath ../..)\" python3 -m pytest tests/ -v"
-        ]
-      }
-    }
-  }
+    ]
+}
