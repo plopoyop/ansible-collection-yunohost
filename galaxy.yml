@@ -1,0 +1,35 @@
+---
+namespace: plopoyop
+name: yunohost
+version: 1.0.0
+readme: README.md
+
+authors:
+  - plopoyop
+
+description: Ansible collection to install and configure YunoHost servers
+
+license:
+  - GPL-2.0-or-later
+
+tags:
+  - infrastructure
+  - linux
+  - yunohost
+  - selfhosting
+  - debian
+
+dependencies: {}
+
+repository: https://github.com/plopoyop/ansible-collection-yunohost
+homepage: https://github.com/plopoyop/ansible-collection-yunohost
+issues: https://github.com/plopoyop/ansible-collection-yunohost/issues
+
+build_ignore:
+  - tests/_vendor
+  - .devbox
+  - .pytest_cache
+  - Taskfile.yml
+  - devbox.json
+  - devbox.lock
+  - ruff.toml

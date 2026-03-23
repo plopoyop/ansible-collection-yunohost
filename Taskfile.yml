@@ -1,0 +1,44 @@
+---
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task -l
+    silent: true
+
+  prepare:
+    desc: "Prepare development environment"
+    cmds:
+      - task: pre-commit
+      - mkdir -p ${ANSIBLE_GALAXY_ROLES_PATH}
+      - mkdir -p ${ANSIBLE_GALAXY_COLLECTIONS_PATH}
+      - ${DEVBOX_CONFIG_DIR}/install-kind-cloud.sh
+    generates:
+      - ${DEVBOX_PROJECT_ROOT}/.devbox/bin/cloud-provider-kind
+
+  pre-commit:
+    desc: "Install pre-commit hooks"
+    cmds:
+      - prek install
+    sources:
+      - .git/hooks/pre-commit
+      - .pre-commit-config.yaml
+    generates:
+      - .git/hooks/pre-commit
+    method: checksum
+
+  check:
+    desc: "Run pre-commit hooks"
+    cmds:
+      - prek run -a
+
+  lint:
+    desc: "Run lint"
+    cmds:
+      - ruff check plugins/ tests/
+
+  test:modules:
+    desc: "Run pytest for ansible modules"
+    cmds:
+      - PYTHONPATH=${PYTHONPATH}:${PWD} pytest tests/

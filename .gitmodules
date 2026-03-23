@@ -1,0 +1,4 @@
+[submodule "tests/_vendor/yunohost"]
+	path = tests/_vendor/yunohost
+	url = https://github.com/YunoHost/yunohost.git
+	branch = dev
