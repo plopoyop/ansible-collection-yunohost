@@ -6,6 +6,7 @@
 
 ## 🚀 New Features
 
+- Add role configure Yunohost [\#5](https://github.com/plopoyop/ansible-collection-yunohost/pull/5) ([plopoyop](https://github.com/plopoyop))
 - Add role yunohost install [\#4](https://github.com/plopoyop/ansible-collection-yunohost/pull/4) ([plopoyop](https://github.com/plopoyop))
 - Release workflows [\#3](https://github.com/plopoyop/ansible-collection-yunohost/pull/3) ([plopoyop](https://github.com/plopoyop))
 - Create Yunohost modules [\#2](https://github.com/plopoyop/ansible-collection-yunohost/pull/2) ([plopoyop](https://github.com/plopoyop))
