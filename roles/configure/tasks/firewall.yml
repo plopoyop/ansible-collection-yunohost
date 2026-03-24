@@ -1,0 +1,21 @@
+---
+# Manage YunoHost firewall ports.
+#
+# All ports are applied with no_reload to batch changes,
+# then a single reload is triggered at the end via handler.
+
+- name: Manage firewall ports
+  plopoyop.yunohost.yunohost_firewall:
+    port: "{{ yunohost_fw_entry.port }}"
+    protocol: "{{ yunohost_fw_entry.protocol | default('tcp') }}"
+    state: "{{ yunohost_fw_entry.state | default('open') }}"
+    comment: "{{ yunohost_fw_entry.comment | default('') }}"
+    upnp: "{{ yunohost_fw_entry.upnp | default(false) }}"
+    no_reload: true
+  loop: "{{ yunohost_firewall_ports }}"
+  loop_control:
+    loop_var: yunohost_fw_entry
+    label: >-
+      {{ yunohost_fw_entry.state | default('open') }}
+      {{ yunohost_fw_entry.protocol | default('tcp') }}/{{ yunohost_fw_entry.port }}
+  notify: Reload YunoHost firewall

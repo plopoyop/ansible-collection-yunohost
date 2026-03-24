@@ -1,0 +1,34 @@
+---
+# Run the configure role with test variables.
+- name: Converge
+  hosts: all
+  gather_facts: true
+  vars:
+    yunohost_main_domain: ynh.test
+    yunohost_admin_username: testadmin
+    yunohost_admin_fullname: Test Admin
+    yunohost_admin_password: "Str0ngP4ss!"
+    yunohost_force_diskspace: true
+    yunohost_ignore_dyndns: true
+
+    yunohost_settings_security:
+      nginx_redirect_to_https: true
+
+    yunohost_domains:
+      - name: ynh.test
+        main: true
+      - name: sub.ynh.test
+
+    yunohost_users:
+      - name: testuser
+        fullname: Test User
+        domain: ynh.test
+        password: "Us3rP4ss!"
+
+    yunohost_firewall_ports:
+      - { port: 8080, comment: "Test port" }
+
+  tasks:
+    - name: Apply configure role
+      ansible.builtin.include_role:
+        name: plopoyop.yunohost.configure

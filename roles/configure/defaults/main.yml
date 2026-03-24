@@ -1,0 +1,136 @@
+---
+# @var yunohost_main_domain
+# @var yunohost_main_domain:type: string
+# @var yunohost_main_domain:description: >
+# Main domain used for postinstall and set as the YunoHost main domain
+yunohost_main_domain: ""
+
+# @var yunohost_admin_username
+# @var yunohost_admin_username:type: string
+# @var yunohost_admin_username:description: >
+# Primary admin username created during postinstall
+yunohost_admin_username: ""
+
+# @var yunohost_admin_fullname
+# @var yunohost_admin_fullname:type: string
+# @var yunohost_admin_fullname:description: >
+# Full name of the primary admin user
+yunohost_admin_fullname: ""
+
+# @var yunohost_admin_password
+# @var yunohost_admin_password:type: string
+# @var yunohost_admin_password:description: >
+# Password for the primary admin user
+yunohost_admin_password: ""
+
+# @var yunohost_force_diskspace
+# @var yunohost_force_diskspace:type: boolean
+# @var yunohost_force_diskspace:description: >
+# Bypass the 10 GB minimum disk space requirement during postinstall
+yunohost_force_diskspace: false
+
+# @var yunohost_ignore_dyndns
+# @var yunohost_ignore_dyndns:type: boolean
+# @var yunohost_ignore_dyndns:description: >
+# Do not subscribe to DynDNS during postinstall
+yunohost_ignore_dyndns: false
+
+# @var yunohost_overwrite_root_password
+# @var yunohost_overwrite_root_password:type: boolean
+# @var yunohost_overwrite_root_password:description: >
+# Set the root password to match the admin password during postinstall
+yunohost_overwrite_root_password: true
+
+# @var yunohost_settings_security
+# @var yunohost_settings_security:type: dict
+# @var yunohost_settings_security:description: >
+# Global security settings (admin_strength, ssh_port, ssh_password_authentication,
+# ssh_compatibility, nginx_redirect_to_https, nginx_compatibility, etc.)
+yunohost_settings_security: {}
+
+# @var yunohost_settings_email
+# @var yunohost_settings_email:type: dict
+# @var yunohost_settings_email:description: >
+# Global email settings. Dependent settings (e.g. smtp_relay_enabled + smtp_relay_host)
+# must be in the same dict (pop3_enabled, smtp_relay_enabled, smtp_relay_host,
+# smtp_relay_port, smtp_relay_user, smtp_relay_password, etc.)
+yunohost_settings_email: {}
+
+# @var yunohost_settings_misc
+# @var yunohost_settings_misc:type: dict
+# @var yunohost_settings_misc:description: >
+# Global miscellaneous settings (backup_compress_tar_archives, dns_exposure,
+# dns_custom_resolvers_enabled, tls_passthrough_enabled)
+yunohost_settings_misc: {}
+
+# @var yunohost_domains
+# @var yunohost_domains:type: list
+# @var yunohost_domains:description: >
+# List of domains to manage. Each entry: name (required), state (present/absent),
+# main (bool), remove_apps (bool), force (bool), install_letsencrypt_cert (bool),
+# ignore_dyndns (bool), settings (dict), ignore_unavailable (bool, default true)
+# @var yunohost_domains:example: >
+#   yunohost_domains:
+#     - name: example.com
+#       main: true
+#       settings:
+#         portal_title: "My Server"
+#     - name: old.example.com
+#       state: absent
+yunohost_domains: []
+
+# @var yunohost_users
+# @var yunohost_users:type: list
+# @var yunohost_users:description: >
+# List of users to manage. Each entry: name (required), state (present/absent),
+# fullname, domain, password (required for creation), admin (bool),
+# mailbox_quota (str), mail_aliases (list), mail_forwards (list),
+# login_shell (str), purge (bool), update_password (on_create/always)
+# @var yunohost_users:example: >
+#   yunohost_users:
+#     - name: john
+#       fullname: John Doe
+#       domain: example.com
+#       password: "{{ vault_john_password }}"
+yunohost_users: []
+
+# @var yunohost_firewall_ports
+# @var yunohost_firewall_ports:type: list
+# @var yunohost_firewall_ports:description: >
+# List of firewall port rules. Each entry: port (required),
+# state (open/closed), protocol (tcp/udp/both), comment (str), upnp (bool)
+# @var yunohost_firewall_ports:example: >
+#   yunohost_firewall_ports:
+#     - { port: 80, comment: HTTP }
+#     - { port: 443, comment: HTTPS }
+#     - { port: 8080, state: closed }
+yunohost_firewall_ports: []
+
+# @var yunohost_apps
+# @var yunohost_apps:type: list
+# @var yunohost_apps:description: >
+# List of applications to manage. Each entry: name (required),
+# state (present/absent/latest), domain (str), path (str), label (str),
+# args (dict), force (bool), purge (bool), no_safety_backup (bool)
+# @var yunohost_apps:example: >
+#   yunohost_apps:
+#     - name: nextcloud
+#       domain: cloud.example.com
+#       path: /
+#       args:
+#         admin: admin
+yunohost_apps: []
+
+# @var yunohost_permissions
+# @var yunohost_permissions:type: list
+# @var yunohost_permissions:description: >
+# List of app permissions to configure. Each entry: name (required, app.permission),
+# allowed (required, list of groups/users), label (str), show_tile (bool),
+# protected (bool), force (bool)
+# @var yunohost_permissions:example: >
+#   yunohost_permissions:
+#     - name: nextcloud
+#       allowed: [all_users]
+#     - name: phpmyadmin
+#       allowed: [admins]
+yunohost_permissions: []

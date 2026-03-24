@@ -1,0 +1,23 @@
+---
+# @meta description: >
+#   Configure a YunoHost server: postinstall, global settings, domains,
+#   users, firewall, applications, and permissions.
+#   Requires `become: true` — all operations need root access.
+# @meta author: plopoyop
+# @meta license: GPL-2.0-or-later
+
+galaxy_info:
+  author: plopoyop
+  description: Configure a YunoHost server (postinstall, settings, domains, users, firewall, apps, permissions)
+  license: GPL-2.0-or-later
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - yunohost
+    - selfhosting
+    - debian
+
+dependencies: []

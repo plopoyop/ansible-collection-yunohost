@@ -1,0 +1,48 @@
+---
+# Prepare the container: install YunoHost so the configure role can run.
+- name: Prepare
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Wait for systemd to be ready # noqa: command-instead-of-module
+      ansible.builtin.command: systemctl is-system-running --wait
+      changed_when: false
+      failed_when: false
+      register: yunohost_prepare_systemd_check
+      retries: 10
+      delay: 2
+      until: >
+        yunohost_prepare_systemd_check.stdout in ['running', 'degraded']
+
+    - name: Make /etc/resolv.conf a regular file (container workaround)
+      ansible.builtin.command: umount /etc/resolv.conf
+      changed_when: true
+      failed_when: false
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install minimal requirements
+      ansible.builtin.apt:
+        name:
+          - curl
+          - gnupg
+        state: present
+
+    - name: Install YunoHost
+      ansible.builtin.include_role:
+        name: plopoyop.yunohost.install
+
+    - name: Install pip
+      ansible.builtin.apt:
+        name: python3-pip
+        state: present
+
+    - name: Upgrade pyOpenSSL (container workaround)
+      ansible.builtin.pip:
+        name:
+          - pyOpenSSL>=23.1.0
+          - cryptography>=41.0.0
+        state: present
+        break_system_packages: true

@@ -1,0 +1,77 @@
+---
+# Verify that the configure role applied correctly.
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check YunoHost is installed (postinstall ran)
+      ansible.builtin.stat:
+        path: /etc/yunohost/installed
+      register: yunohost_verify_installed
+
+    - name: Assert postinstall completed
+      ansible.builtin.assert:
+        that:
+          - yunohost_verify_installed.stat.exists
+        fail_msg: "YunoHost postinstall did not complete"
+        success_msg: "YunoHost is installed"
+
+    - name: Check main domain is configured # noqa: command-instead-of-module
+      ansible.builtin.command: cat /etc/yunohost/current_host
+      changed_when: false
+      register: yunohost_verify_main_domain
+
+    - name: Assert main domain
+      ansible.builtin.assert:
+        that:
+          - "'ynh.test' in yunohost_verify_main_domain.stdout"
+        fail_msg: "Main domain is not ynh.test"
+        success_msg: "Main domain is ynh.test"
+
+    - name: Check test user exists # noqa: command-instead-of-module
+      ansible.builtin.command: yunohost user info testuser --output-as json
+      changed_when: false
+      register: yunohost_verify_user
+
+    - name: Assert test user
+      ansible.builtin.assert:
+        that:
+          - yunohost_verify_user.rc == 0
+        fail_msg: "User testuser was not created"
+        success_msg: "User testuser exists"
+
+    - name: Check subdomain exists # noqa: command-instead-of-module
+      ansible.builtin.command: yunohost domain list --output-as json
+      changed_when: false
+      register: yunohost_verify_domains
+
+    - name: Assert subdomain
+      ansible.builtin.assert:
+        that:
+          - "'sub.ynh.test' in yunohost_verify_domains.stdout"
+        fail_msg: "Subdomain sub.ynh.test was not created"
+        success_msg: "Subdomain sub.ynh.test exists"
+
+    - name: Check firewall port is open # noqa: command-instead-of-module
+      ansible.builtin.command: yunohost firewall list --output-as json
+      changed_when: false
+      register: yunohost_verify_firewall
+
+    - name: Assert test port is open
+      ansible.builtin.assert:
+        that:
+          - "'8080' in yunohost_verify_firewall.stdout"
+        fail_msg: "Port 8080 is not open"
+        success_msg: "Port 8080 is open"
+
+    - name: Check nginx redirect is enabled # noqa: command-instead-of-module
+      ansible.builtin.command: yunohost settings get security.nginx.nginx_redirect_to_https
+      changed_when: false
+      register: yunohost_verify_nginx
+
+    - name: Assert nginx redirect
+      ansible.builtin.assert:
+        that:
+          - "'1' in yunohost_verify_nginx.stdout or 'True' in yunohost_verify_nginx.stdout"
+        fail_msg: "nginx_redirect_to_https is not enabled"
+        success_msg: "nginx_redirect_to_https is enabled"

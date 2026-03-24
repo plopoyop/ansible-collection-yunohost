@@ -1,0 +1,35 @@
+---
+# Manage YunoHost applications: install, remove, upgrade.
+#
+# Apps with state=absent are removed first, then state=present/latest are managed.
+
+- name: Remove apps with state=absent
+  plopoyop.yunohost.yunohost_app:
+    name: "{{ yunohost_app_entry.name }}"
+    state: absent
+    purge: "{{ yunohost_app_entry.purge | default(false) }}"
+  loop: >-
+    {{ yunohost_apps
+       | selectattr('state', 'defined')
+       | selectattr('state', 'eq', 'absent') | list }}
+  loop_control:
+    loop_var: yunohost_app_entry
+    label: "{{ yunohost_app_entry.name }}"
+
+- name: Ensure apps are present or up to date
+  plopoyop.yunohost.yunohost_app:
+    name: "{{ yunohost_app_entry.name }}"
+    state: "{{ yunohost_app_entry.state | default('present') }}"
+    domain: "{{ yunohost_app_entry.domain | default(omit) }}"
+    path: "{{ yunohost_app_entry.path | default(omit) }}"
+    label: "{{ yunohost_app_entry.label | default(omit) }}"
+    args: "{{ yunohost_app_entry.args | default(omit) }}"
+    force: "{{ yunohost_app_entry.force | default(false) }}"
+    no_safety_backup: "{{ yunohost_app_entry.no_safety_backup | default(false) }}"
+  loop: >-
+    {{ yunohost_apps | rejectattr('state', 'defined') | list
+       + yunohost_apps | selectattr('state', 'defined')
+       | rejectattr('state', 'eq', 'absent') | list }}
+  loop_control:
+    loop_var: yunohost_app_entry
+    label: "{{ yunohost_app_entry.name }}"

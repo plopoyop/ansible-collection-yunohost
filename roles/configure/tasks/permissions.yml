@@ -1,0 +1,16 @@
+---
+# Manage YunoHost application permissions.
+# Runs after apps are installed so that permissions exist.
+
+- name: Configure permissions
+  plopoyop.yunohost.yunohost_permission:
+    name: "{{ yunohost_perm_entry.name }}"
+    allowed: "{{ yunohost_perm_entry.allowed }}"
+    label: "{{ yunohost_perm_entry.label | default(omit) }}"
+    show_tile: "{{ yunohost_perm_entry.show_tile | default(omit) }}"
+    protected: "{{ yunohost_perm_entry.protected | default(omit) }}"
+    force: "{{ yunohost_perm_entry.force | default(false) }}"
+  loop: "{{ yunohost_permissions }}"
+  loop_control:
+    loop_var: yunohost_perm_entry
+    label: "{{ yunohost_perm_entry.name }}"

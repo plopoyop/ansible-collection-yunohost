@@ -1,0 +1,32 @@
+---
+# Configure a YunoHost server: postinstall, domains, users, firewall, apps.
+
+- name: Run postinstall
+  ansible.builtin.include_tasks: postinstall.yml
+
+- name: Configure global settings
+  ansible.builtin.include_tasks: settings.yml
+  when: >
+    yunohost_settings_security | length > 0
+    or yunohost_settings_email | length > 0
+    or yunohost_settings_misc | length > 0
+
+- name: Manage domains
+  ansible.builtin.include_tasks: domains.yml
+  when: yunohost_domains | length > 0
+
+- name: Manage users
+  ansible.builtin.include_tasks: users.yml
+  when: yunohost_users | length > 0
+
+- name: Manage firewall ports
+  ansible.builtin.include_tasks: firewall.yml
+  when: yunohost_firewall_ports | length > 0
+
+- name: Manage applications
+  ansible.builtin.include_tasks: apps.yml
+  when: yunohost_apps | length > 0
+
+- name: Manage permissions
+  ansible.builtin.include_tasks: permissions.yml
+  when: yunohost_permissions | length > 0

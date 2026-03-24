@@ -1,0 +1,50 @@
+---
+# Manage YunoHost domains: create, delete, set main, configure settings.
+#
+# Domains with state=absent are removed first, then state=present are created,
+# so that a rename (remove old + add new) works in a single pass.
+
+- name: Remove domains with state=absent
+  plopoyop.yunohost.yunohost_domain:
+    name: "{{ yunohost_domain_entry.name }}"
+    state: absent
+    remove_apps: "{{ yunohost_domain_entry.remove_apps | default(false) }}"
+    force: "{{ yunohost_domain_entry.force | default(false) }}"
+    ignore_dyndns: "{{ yunohost_domain_entry.ignore_dyndns | default(false) }}"
+  loop: >-
+    {{ yunohost_domains
+       | selectattr('state', 'defined')
+       | selectattr('state', 'eq', 'absent') | list }}
+  loop_control:
+    loop_var: yunohost_domain_entry
+    label: "{{ yunohost_domain_entry.name }}"
+
+- name: Ensure domains are present
+  plopoyop.yunohost.yunohost_domain:
+    name: "{{ yunohost_domain_entry.name }}"
+    state: present
+    main: "{{ yunohost_domain_entry.main | default(false) }}"
+    install_letsencrypt_cert: "{{ yunohost_domain_entry.install_letsencrypt_cert | default(false) }}"
+    ignore_dyndns: "{{ yunohost_domain_entry.ignore_dyndns | default(false) }}"
+  loop: >-
+    {{ yunohost_domains | rejectattr('state', 'defined') | list
+       + yunohost_domains | selectattr('state', 'defined')
+       | selectattr('state', 'eq', 'present') | list }}
+  loop_control:
+    loop_var: yunohost_domain_entry
+    label: "{{ yunohost_domain_entry.name }}"
+
+- name: Configure domain settings
+  plopoyop.yunohost.yunohost_domain_config:
+    name: "{{ yunohost_domain_entry.name }}"
+    settings: "{{ yunohost_domain_entry.settings }}"
+    ignore_unavailable: "{{ yunohost_domain_entry.ignore_unavailable | default(true) }}"
+  loop: >-
+    {{ yunohost_domains | selectattr('settings', 'defined')
+       | rejectattr('state', 'defined') | list
+       + yunohost_domains | selectattr('settings', 'defined')
+       | selectattr('state', 'defined')
+       | selectattr('state', 'eq', 'present') | list }}
+  loop_control:
+    loop_var: yunohost_domain_entry
+    label: "{{ yunohost_domain_entry.name }}"
