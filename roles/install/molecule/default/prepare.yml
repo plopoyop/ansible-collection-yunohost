@@ -1,0 +1,34 @@
+---
+# Purpose: bring the instance to a known baseline before converge runs.
+- name: Prepare
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Wait for systemd to be ready # noqa: command-instead-of-module
+      ansible.builtin.command: systemctl is-system-running --wait
+      changed_when: false
+      failed_when: false
+      register: yunohost_prepare_systemd_check
+      retries: 10
+      delay: 2
+      until: >
+        yunohost_prepare_systemd_check.stdout in ['running', 'degraded']
+
+    # In containers, /etc/resolv.conf is bind-mounted by the container runtime.
+    # The resolvconf package (pulled by yunohost) fails to replace it with a symlink.
+    # Unmounting the bind-mount makes it a regular file again.
+    - name: Make /etc/resolv.conf a regular file (container workaround)
+      ansible.builtin.command: umount /etc/resolv.conf
+      changed_when: true
+      failed_when: false
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install minimal requirements for assertions
+      ansible.builtin.apt:
+        name:
+          - curl
+          - gnupg
+        state: present

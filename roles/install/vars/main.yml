@@ -1,0 +1,71 @@
+---
+# Internal variables — not intended to be overridden by users.
+
+# Packages needed before dist-upgrade (perl fix + grub non-interactive upgrade)
+yunohost_install_pre_upgrade_packages:
+  - libtext-iconv-perl
+  - grub-common
+  - grub2-common
+
+# Pre-install dependencies required before the main YunoHost packages
+yunohost_install_predeps:
+  - lsb-release
+  - dialog
+  - curl
+  - gnupg
+  - apt-transport-https
+  - adduser
+  - debconf
+  - debconf-utils
+  - debhelper
+  - dh-autoreconf
+  - locales
+  - python3-debian
+
+# Main YunoHost packages to install
+yunohost_install_packages:
+  - yunohost
+  - yunohost-admin
+  - postfix
+
+# Packages that conflict with YunoHost
+yunohost_install_conflicting_packages:
+  - bind9
+  - apache2
+
+# Debconf preseed values for package installation
+# Dict keyed by package name, each containing a list of question/value/vtype entries.
+# Entries with sensitive values (passwords) are marked with no_log: true.
+yunohost_install_debconf_preseeds:
+  slapd:
+    no_log: true
+    entries:
+      - { question: slapd/password1, value: yunohost, vtype: password }
+      - { question: slapd/password2, value: yunohost, vtype: password }
+      - { question: slapd/domain, value: yunohost.org, vtype: string }
+      - { question: shared/organization, value: yunohost.org, vtype: string }
+      - { question: slapd/allow_ldap_v2, value: "false", vtype: boolean }
+      - { question: slapd/invalid_config, value: "true", vtype: boolean }
+      - { question: slapd/backend, value: MDB, vtype: select }
+  postfix:
+    no_log: false
+    entries:
+      - { question: postfix/main_mailer_type, value: "Internet Site", vtype: select }
+      - { question: postfix/mailname, value: /etc/mailname, vtype: string }
+  nslcd:
+    no_log: true
+    entries:
+      - { question: nslcd/ldap-bindpw, value: "", vtype: password }
+      - { question: nslcd/ldap-starttls, value: "false", vtype: boolean }
+      - { question: nslcd/ldap-reqcert, value: "", vtype: select }
+      - { question: nslcd/ldap-uris, value: "ldap://localhost/", vtype: string }
+      - { question: nslcd/ldap-binddn, value: "", vtype: string }
+      - { question: nslcd/ldap-base, value: "dc=yunohost,dc=org", vtype: string }
+  libnss-ldapd:
+    no_log: false
+    entries:
+      - { question: libnss-ldapd/nsswitch, value: "group, passwd, shadow", vtype: multiselect }
+  postsrsd:
+    no_log: false
+    entries:
+      - { question: postsrsd/domain, value: yunohost.org, vtype: string }

@@ -1,0 +1,62 @@
+---
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: false
+    ignore-errors: false
+    requirements-file: requirements.yml
+
+driver:
+  name: podman
+
+platforms:
+  - name: "yunohost-instance"
+    image: "docker.io/geerlingguy/docker-${MOLECULE_DISTRO:-debian12}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    cgroupns_mode: host
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    privileged: true
+    pre_build_image: true
+    tmpfs:
+      /run: rw,nosuid,nodev
+      /tmp: rw,nosuid,nodev
+    capabilities:
+      - SYS_ADMIN
+    # environment:
+    #   container: podman
+
+ansible:
+  cfg:
+    defaults:
+      host_key_checking: false
+      verbosity: 1
+    ssh_connection:
+      pipelining: true
+  env:
+    ANSIBLE_FORCE_COLOR: "1"
+    ANSIBLE_LOAD_CALLBACK_PLUGINS: "1"
+
+  executor:
+    backend: ansible-playbook
+    args:
+      ansible_playbook:
+        - --diff
+        - --force-handlers
+
+  playbooks:
+    create: create.yml
+    converge: converge.yml
+    verify: verify.yml
+
+scenario:
+  name: default
+  test_sequence:
+    - dependency
+    - destroy
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - verify
+    - destroy

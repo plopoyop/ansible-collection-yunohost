@@ -1,0 +1,18 @@
+---
+# Set up the YunoHost apt repository — equivalent to setup_package_source().
+
+- name: Configure YunoHost apt repository
+  ansible.builtin.deb822_repository:
+    name: yunohost
+    types: deb
+    uris: "{{ yunohost_install_repo_url }}"
+    suites: "{{ yunohost_install_debian_codename }}"
+    components: >-
+      {{ 'stable' if yunohost_install_distrib == 'stable' else
+         'stable testing' if yunohost_install_distrib == 'testing' else
+         'stable testing unstable' }}
+    signed_by: "{{ yunohost_install_gpg_key_url }}"
+  notify: Update apt cache
+
+- name: Flush handlers to update apt cache now
+  ansible.builtin.meta: flush_handlers

@@ -1,6 +1,9 @@
 ---
 version: '3'
 
+vars:
+  ROLES_LIST: ["install"]
+
 tasks:
   default:
     cmds:
@@ -37,3 +40,33 @@ tasks:
     desc: "Run pytest for ansible modules"
     cmds:
       - PYTHONPATH=${PYTHONPATH}:${PWD} pytest tests/
+
+  test:role:*:
+    desc: "Run tests on a specific role"
+    dir: 'roles/{{.ROLE_NAME}}'
+    deps:
+      - prepare
+    cmds:
+      - molecule test --all
+    vars:
+      ROLE_NAME: '{{index .MATCH 0}}'
+
+  test:roles:all:
+    desc: "Run tests on all roles"
+    cmds:
+      - for: { var: ROLES_LIST }
+        task: test:role:{{.ITEM}}
+
+  gen-doc:role:*:
+    desc: "Run tests on a specific role"
+    dir: 'roles/{{.ROLE_NAME}}'
+    cmds:
+      - ansible-doctor -f
+    vars:
+      ROLE_NAME: '{{index .MATCH 0}}'
+
+  gen-doc:roles:all:
+    desc: "Generate doc"
+    cmds:
+      - for: { var: ROLES_LIST }
+        task: gen-doc:role:{{.ITEM}}

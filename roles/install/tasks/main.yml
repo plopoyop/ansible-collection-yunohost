@@ -1,0 +1,21 @@
+---
+# Install YunoHost on a Debian Bookworm system.
+#
+# Converted from the official install script: https://install.yunohost.org/
+# This role performs all steps up to (but not including) the post-installation.
+
+- name: Run pre-flight checks
+  ansible.builtin.include_tasks: assertions.yml
+
+- name: Upgrade system packages
+  ansible.builtin.include_tasks: upgrade_system.yml
+  when: yunohost_install_upgrade_system
+
+- name: Apply workarounds required before installation
+  ansible.builtin.include_tasks: workarounds.yml
+
+- name: Configure YunoHost apt repository
+  ansible.builtin.include_tasks: setup_repo.yml
+
+- name: Install YunoHost packages
+  ansible.builtin.include_tasks: install_packages.yml

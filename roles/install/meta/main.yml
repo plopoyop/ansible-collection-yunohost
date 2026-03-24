@@ -1,0 +1,23 @@
+---
+# @meta description: >
+#   Install YunoHost on a fresh Debian 12 (Bookworm) system.
+#   Converted from the official install script at https://install.yunohost.org/.
+#   This role performs all steps up to (but not including) the post-installation.
+# @meta author: plopoyop
+# @meta license: GPL-2.0-or-later
+
+galaxy_info:
+  author: plopoyop
+  description: Install YunoHost on a Debian Bookworm system
+  license: GPL-2.0-or-later
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - yunohost
+    - selfhosting
+    - debian
+
+dependencies: []
