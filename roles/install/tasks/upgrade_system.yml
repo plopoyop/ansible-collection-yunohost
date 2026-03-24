@@ -1,0 +1,22 @@
+---
+# System upgrade — equivalent to upgrade_system() in the install script.
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install packages required before dist-upgrade # noqa: package-latest
+  ansible.builtin.apt:
+    name: "{{ yunohost_install_pre_upgrade_packages }}"
+    state: latest
+    dpkg_options: force-confold
+  failed_when: false
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+
+- name: Run dist-upgrade
+  ansible.builtin.apt:
+    upgrade: dist
+    dpkg_options: force-confold
+  environment:
+    DEBIAN_FRONTEND: noninteractive

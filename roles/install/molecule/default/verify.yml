@@ -1,0 +1,72 @@
+---
+# Purpose: assert that the instance really ended up in the expected state.
+# Molecule calls this playbook with `molecule verify`.
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check that YunoHost package is installed
+      ansible.builtin.command: dpkg -s yunohost
+      changed_when: false
+      register: yunohost_verify_dpkg
+
+    - name: Assert yunohost package is installed
+      ansible.builtin.assert:
+        that:
+          - yunohost_verify_dpkg.rc == 0
+        fail_msg: "YunoHost package is not installed"
+        success_msg: "YunoHost package is installed"
+
+    - name: Check that yunohost-admin package is installed
+      ansible.builtin.command: dpkg -s yunohost-admin
+      changed_when: false
+
+    - name: Check that postfix package is installed
+      ansible.builtin.command: dpkg -s postfix
+      changed_when: false
+
+    - name: Check YunoHost apt repository is configured
+      ansible.builtin.stat:
+        path: /etc/apt/sources.list.d/yunohost.sources
+      register: yunohost_verify_repo
+
+    - name: Assert YunoHost repository file exists
+      ansible.builtin.assert:
+        that:
+          - yunohost_verify_repo.stat.exists
+        fail_msg: "YunoHost apt repository is not configured"
+        success_msg: "YunoHost apt repository is configured"
+
+    - name: Check that nginx is installed (pulled by yunohost)
+      ansible.builtin.command: dpkg -s nginx
+      changed_when: false
+
+    - name: Check that slapd is installed (pulled by yunohost)
+      ansible.builtin.command: dpkg -s slapd
+      changed_when: false
+
+    - name: Check that dbus service is enabled # noqa: command-instead-of-module
+      ansible.builtin.command: systemctl is-enabled dbus
+      changed_when: false
+      register: yunohost_verify_dbus
+
+    - name: Assert dbus is enabled
+      ansible.builtin.assert:
+        that:
+          - yunohost_verify_dbus.stdout == 'enabled'
+            or yunohost_verify_dbus.stdout == 'static'
+            or yunohost_verify_dbus.stdout == 'alias'
+        fail_msg: "dbus service is not enabled"
+        success_msg: "dbus service is enabled"
+
+    - name: Check en_US.UTF-8 locale is available
+      ansible.builtin.command: locale -a
+      changed_when: false
+      register: yunohost_verify_locale
+
+    - name: Assert en_US.UTF-8 locale exists
+      ansible.builtin.assert:
+        that:
+          - "'en_US.utf8' in yunohost_verify_locale.stdout"
+        fail_msg: "en_US.UTF-8 locale is not available"
+        success_msg: "en_US.UTF-8 locale is available"

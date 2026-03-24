@@ -1,0 +1,93 @@
+---
+# Pre-flight checks — equivalent to check_assertions() in the install script.
+# Relies on ansible_facts gathered by gather_facts: true (or setup module).
+
+- name: Check that the target is running Debian
+  ansible.builtin.assert:
+    that:
+      - ansible_facts["distribution"] == 'Debian'
+    fail_msg: >-
+      YunoHost can only be installed on Debian.
+      This system is running {{ ansible_facts["distribution"] }}.
+    quiet: true
+
+- name: Check that the system is not Ubuntu or Linux Mint
+  ansible.builtin.assert:
+    that:
+      - ansible_facts["distribution"] not in ['Ubuntu', 'LinuxMint']
+    fail_msg: >-
+      YunoHost cannot be installed on {{ ansible_facts["distribution"] }}.
+      A raw Debian 12 (Bookworm) system is required.
+    quiet: true
+
+- name: Check Debian major version is 12 (Bookworm)
+  ansible.builtin.assert:
+    that:
+      - ansible_facts["distribution_major_version"] == '12'
+    fail_msg: >-
+      YunoHost requires Debian 12 (Bookworm), but this system is running
+      Debian {{ ansible_facts["distribution_version"] }} ({{ ansible_facts["distribution_release"] }}).
+    quiet: true
+
+- name: Check that systemd is the service manager
+  ansible.builtin.assert:
+    that:
+      - ansible_facts["service_mgr"] == 'systemd'
+    fail_msg: >-
+      YunoHost requires systemd. This system uses {{ ansible_facts["service_mgr"] }}.
+    quiet: true
+
+- name: Check kernel version is >= 3.12
+  ansible.builtin.assert:
+    that:
+      - ansible_facts["kernel"] is version('3.12', '>=')
+    fail_msg: >-
+      YunoHost requires a kernel >= 3.12. Current kernel is {{ ansible_facts["kernel"] }}.
+    quiet: true
+
+- name: Detect container environment
+  ansible.builtin.set_fact:
+    yunohost_install_virtualization: "{{ ansible_facts['virtualization_type'] | default('none') }}"
+
+- name: Fail if running in an unsupported container
+  ansible.builtin.fail:
+    msg: >-
+      It seems this system is running in {{ yunohost_install_virtualization }}.
+      Docker and some container technologies are not supported.
+      Set yunohost_install_force=true to override this check.
+  when:
+    - not yunohost_install_force
+    - yunohost_install_virtualization in ['docker', 'container-other']
+
+- name: Check for conflicting packages
+  ansible.builtin.shell: |
+    set -o pipefail
+    dpkg --get-selections | grep -v deinstall | grep -q '{{ yunohost_install_pkg }}\s'
+  args:
+    executable: /bin/bash
+  changed_when: false
+  failed_when: false
+  register: yunohost_install_conflict_check
+  loop: "{{ yunohost_install_conflicting_packages }}"
+  loop_control:
+    loop_var: yunohost_install_pkg
+
+- name: Fail if conflicting packages are installed
+  ansible.builtin.fail:
+    msg: >-
+      {{ yunohost_install_conflict_result.yunohost_install_pkg }} is installed
+      on this system and conflicts with YunoHost. Please remove it first:
+      apt remove {{ yunohost_install_conflict_result.yunohost_install_pkg }} --purge --autoremove
+  when: yunohost_install_conflict_result.rc == 0 and not yunohost_install_force
+  loop: "{{ yunohost_install_conflict_check.results }}"
+  loop_control:
+    loop_var: yunohost_install_conflict_result
+    label: "{{ yunohost_install_conflict_result.yunohost_install_pkg }}"
+
+- name: Check /sbin is in PATH
+  ansible.builtin.assert:
+    that:
+      - "'/sbin' in ansible_facts['env']['PATH']"
+    fail_msg: >-
+      /sbin must be in the PATH. Current PATH: {{ ansible_facts['env']['PATH'] }}
+    quiet: true

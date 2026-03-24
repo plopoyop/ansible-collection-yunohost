@@ -1,0 +1,77 @@
+---
+# Workarounds — equivalent to boring_workarounds() in the install script.
+
+- name: Install pre-installation dependencies
+  ansible.builtin.apt:
+    name: "{{ yunohost_install_predeps }}"
+    state: present
+    install_recommends: false
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+
+# ---- Locale fix ----
+
+- name: Ensure en_US.UTF-8 locale is generated
+  ansible.builtin.lineinfile:
+    path: /etc/locale.gen
+    regexp: '^\s*#?\s*en_US\.UTF-8'
+    line: 'en_US.UTF-8 UTF-8'
+  notify: Regenerate locales
+
+- name: Flush handlers to regenerate locales now
+  ansible.builtin.meta: flush_handlers
+
+- name: Set LC_ALL in /etc/environment
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    regexp: '^LC_ALL='
+    line: 'LC_ALL="en_US.UTF-8"'
+    create: true
+    mode: "0644"
+
+# ---- fail2ban workaround ----
+
+- name: Ensure /var/log/auth.log exists (required by fail2ban)
+  ansible.builtin.file:
+    path: /var/log/auth.log
+    state: touch
+    mode: "0640"
+    modification_time: preserve
+    access_time: preserve
+
+# ---- avahi workaround ----
+# When running in LXC, the avahi-daemon postinst can fail because the
+# auto-assigned UID may collide with the host. Pre-creating the user
+# with a random UID avoids this issue.
+
+- name: Check if avahi user already exists
+  ansible.builtin.command: id avahi
+  changed_when: false
+  failed_when: false
+  register: yunohost_install_avahi_check
+
+- name: Ensure avahi group exists
+  ansible.builtin.group:
+    name: avahi
+    system: true
+  when: yunohost_install_avahi_check.rc != 0
+
+- name: Create avahi system user with random UID (LXC workaround)
+  ansible.builtin.user:
+    name: avahi
+    system: true
+    home: /var/run/avahi-daemon
+    create_home: false
+    comment: Avahi mDNS daemon
+    group: avahi
+    shell: /usr/sbin/nologin
+  when: yunohost_install_avahi_check.rc != 0
+
+# ---- resolvconf workaround ----
+# On some VPS (e.g. OVH), /etc/resolv.conf has the immutable attribute set,
+# which prevents resolvconf from working properly.
+
+- name: Remove immutable attribute from /etc/resolv.conf
+  ansible.builtin.command: chattr -i /etc/resolv.conf
+  changed_when: false
+  failed_when: false

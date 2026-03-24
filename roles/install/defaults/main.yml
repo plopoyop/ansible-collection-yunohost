@@ -1,0 +1,36 @@
+---
+# @var yunohost_install_distrib
+# @var yunohost_install_distrib:type: string
+# @var yunohost_install_distrib:description: >
+# YunoHost distribution channel
+yunohost_install_distrib: stable
+
+# @var yunohost_install_force
+# @var yunohost_install_force:type: boolean
+# @var yunohost_install_force:description: >
+# Skip pre-flight checks (docker detection, bind9/apache2 conflict)
+yunohost_install_force: false
+
+# @var yunohost_install_repo_url
+# @var yunohost_install_repo_url:type: string
+# @var yunohost_install_repo_url:description: >
+# YunoHost Debian repository base URL
+yunohost_install_repo_url: http://forge.yunohost.org/debian/
+
+# @var yunohost_install_gpg_key_url
+# @var yunohost_install_gpg_key_url:type: string
+# @var yunohost_install_gpg_key_url:description: >
+# YunoHost GPG key URL (used by deb822_repository signed_by)
+yunohost_install_gpg_key_url: https://forge.yunohost.org/yunohost_bookworm.asc
+
+# @var yunohost_install_debian_codename
+# @var yunohost_install_debian_codename:type: string
+# @var yunohost_install_debian_codename:description: >
+# Debian codename to target
+yunohost_install_debian_codename: bookworm
+
+# @var yunohost_install_upgrade_system
+# @var yunohost_install_upgrade_system:type: boolean
+# @var yunohost_install_upgrade_system:description: >
+# Perform a full dist-upgrade before installing YunoHost
+yunohost_install_upgrade_system: true

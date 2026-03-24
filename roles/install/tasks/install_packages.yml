@@ -1,0 +1,25 @@
+---
+# Install YunoHost packages — equivalent to install_yunohost_packages().
+
+- name: Preseed debconf values
+  ansible.builtin.include_tasks: debconf_preseed.yml
+  loop: "{{ yunohost_install_debconf_preseeds | dict2items }}"
+  loop_control:
+    loop_var: yunohost_install_preseed
+    label: "{{ yunohost_install_preseed.key }}"
+
+- name: Install YunoHost packages
+  ansible.builtin.apt:
+    name: "{{ yunohost_install_packages }}"
+    state: present
+    install_recommends: true
+    dpkg_options: force-confold
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+    SUDO_FORCE_REMOVE: "yes"
+
+- name: Ensure dbus is started and enabled
+  ansible.builtin.systemd:
+    name: dbus
+    state: started
+    enabled: true
