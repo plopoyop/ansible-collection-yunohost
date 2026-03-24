@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.0.0](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.0) (2026-03-23)
+## [1.0.0](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.0) (2026-03-24)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/6d388eea414c2330305028cf8ae7628415fa5f03...1.0.0)
 
 ## 🚀 New Features
 
+- Add role yunohost install [\#4](https://github.com/plopoyop/ansible-collection-yunohost/pull/4) ([plopoyop](https://github.com/plopoyop))
 - Release workflows [\#3](https://github.com/plopoyop/ansible-collection-yunohost/pull/3) ([plopoyop](https://github.com/plopoyop))
 - Create Yunohost modules [\#2](https://github.com/plopoyop/ansible-collection-yunohost/pull/2) ([plopoyop](https://github.com/plopoyop))
 - Init collection and add tooling [\#1](https://github.com/plopoyop/ansible-collection-yunohost/pull/1) ([plopoyop](https://github.com/plopoyop))
