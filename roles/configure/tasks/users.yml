@@ -1,0 +1,36 @@
+---
+# Manage YunoHost users: create, update, delete.
+#
+# Users with state=absent are removed first, then state=present are managed.
+
+- name: Remove users with state=absent
+  plopoyop.yunohost.yunohost_user:
+    name: "{{ yunohost_user_entry.name }}"
+    state: absent
+    purge: "{{ yunohost_user_entry.purge | default(false) }}"
+  loop: "{{ yunohost_users | selectattr('state', 'defined') | selectattr('state', 'eq', 'absent') | list }}"
+  loop_control:
+    loop_var: yunohost_user_entry
+    label: "{{ yunohost_user_entry.name }}"
+
+- name: Ensure users are present
+  plopoyop.yunohost.yunohost_user:
+    name: "{{ yunohost_user_entry.name }}"
+    state: present
+    fullname: "{{ yunohost_user_entry.fullname | default(omit) }}"
+    domain: "{{ yunohost_user_entry.domain | default(omit) }}"
+    password: "{{ yunohost_user_entry.password | default(omit) }}"
+    admin: "{{ yunohost_user_entry.admin | default(false) }}"
+    mailbox_quota: "{{ yunohost_user_entry.mailbox_quota | default(omit) }}"
+    mail_aliases: "{{ yunohost_user_entry.mail_aliases | default(omit) }}"
+    mail_forwards: "{{ yunohost_user_entry.mail_forwards | default(omit) }}"
+    login_shell: "{{ yunohost_user_entry.login_shell | default(omit) }}"
+    update_password: "{{ yunohost_user_entry.update_password | default('on_create') }}"
+  loop: >-
+    {{ yunohost_users | rejectattr('state', 'defined') | list
+       + yunohost_users | selectattr('state', 'defined')
+       | selectattr('state', 'eq', 'present') | list }}
+  loop_control:
+    loop_var: yunohost_user_entry
+    label: "{{ yunohost_user_entry.name }}"
+  no_log: true

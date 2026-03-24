@@ -1,0 +1,20 @@
+---
+# Configure YunoHost global settings, split by section.
+# Each section is a separate module call so that dependent settings
+# (e.g. smtp_relay_enabled + smtp_relay_host) share the same context.
+
+- name: Apply security settings
+  plopoyop.yunohost.yunohost_settings:
+    settings: "{{ yunohost_settings_security }}"
+  when: yunohost_settings_security | length > 0
+
+- name: Apply email settings
+  plopoyop.yunohost.yunohost_settings:
+    settings: "{{ yunohost_settings_email }}"
+  when: yunohost_settings_email | length > 0
+  no_log: "{{ 'smtp_relay_password' in yunohost_settings_email }}"
+
+- name: Apply misc settings
+  plopoyop.yunohost.yunohost_settings:
+    settings: "{{ yunohost_settings_misc }}"
+  when: yunohost_settings_misc | length > 0

@@ -1,0 +1,12 @@
+---
+# Run YunoHost postinstall if not already done.
+
+- name: Run YunoHost postinstall
+  plopoyop.yunohost.yunohost_postinstall:
+    domain: "{{ yunohost_main_domain }}"
+    username: "{{ yunohost_admin_username }}"
+    fullname: "{{ yunohost_admin_fullname }}"
+    password: "{{ yunohost_admin_password }}"
+    force_diskspace: "{{ yunohost_force_diskspace }}"
+    ignore_dyndns: "{{ yunohost_ignore_dyndns }}"
+    overwrite_root_password: "{{ yunohost_overwrite_root_password }}"

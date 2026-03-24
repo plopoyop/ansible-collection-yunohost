@@ -1,0 +1,5 @@
+---
+- name: Reload YunoHost firewall
+  ansible.builtin.command: yunohost firewall reload
+  changed_when: true
+  listen: Reload YunoHost firewall
