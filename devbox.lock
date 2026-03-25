@@ -321,51 +321,51 @@
         }
       }
     },
-    "prek@0.3.5": {
-      "last_modified": "2026-03-14T08:29:25Z",
-      "resolved": "github:NixOS/nixpkgs/f82ce7af0b79ac154b12e27ed800aeb97413723c#prek",
+    "prek@0.3.6": {
+      "last_modified": "2026-03-21T07:29:51Z",
+      "resolved": "github:NixOS/nixpkgs/09061f748ee21f68a089cd5d91ec1859cd93d0be#prek",
       "source": "devbox-search",
-      "version": "0.3.5",
+      "version": "0.3.6",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/r0r66fdc7iirp4dq2dr9cvxcwqpbbnd3-prek-0.3.5",
+              "path": "/nix/store/g10bjnyjdi9whis7qvhhy9wkjc2qascb-prek-0.3.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/r0r66fdc7iirp4dq2dr9cvxcwqpbbnd3-prek-0.3.5"
+          "store_path": "/nix/store/g10bjnyjdi9whis7qvhhy9wkjc2qascb-prek-0.3.6"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/f5d4jzv26gicjzy8sq4v24d7whlmm7fa-prek-0.3.5",
+              "path": "/nix/store/14sqygl15sl4nzv5m4zq49msk47r40c0-prek-0.3.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/f5d4jzv26gicjzy8sq4v24d7whlmm7fa-prek-0.3.5"
+          "store_path": "/nix/store/14sqygl15sl4nzv5m4zq49msk47r40c0-prek-0.3.6"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/i1hvyb386qza5hsi9g82l9547pvsbyrv-prek-0.3.5",
+              "path": "/nix/store/i7v77nqr7p8krkyn0vqh03rriyh1lrfm-prek-0.3.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/i1hvyb386qza5hsi9g82l9547pvsbyrv-prek-0.3.5"
+          "store_path": "/nix/store/i7v77nqr7p8krkyn0vqh03rriyh1lrfm-prek-0.3.6"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/yz3z6c8cyakkixhrxhn73nzfzj7202jm-prek-0.3.5",
+              "path": "/nix/store/wy413ccpy707n5n7wagrzd153hy81cz5-prek-0.3.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/yz3z6c8cyakkixhrxhn73nzfzj7202jm-prek-0.3.5"
+          "store_path": "/nix/store/wy413ccpy707n5n7wagrzd153hy81cz5-prek-0.3.6"
         }
       }
     },
