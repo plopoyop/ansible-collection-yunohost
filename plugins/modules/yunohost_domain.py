@@ -212,7 +212,9 @@ def main():
             lock.release()
 
     except Exception as e:
-        module.fail_json(msg=str(e), domain=name)
+        import traceback
+
+        module.fail_json(msg="%s\n%s" % (e, traceback.format_exc()), domain=name)
 
 
 if __name__ == "__main__":

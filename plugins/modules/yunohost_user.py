@@ -324,7 +324,9 @@ def main():
             lock.release()
 
     except Exception as e:
-        module.fail_json(msg=str(e), user=username)
+        import traceback
+
+        module.fail_json(msg="%s\n%s" % (e, traceback.format_exc()), user=username)
 
 
 if __name__ == "__main__":
