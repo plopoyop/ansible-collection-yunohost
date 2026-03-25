@@ -136,6 +136,7 @@ from urllib.parse import urlencode
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -241,7 +242,15 @@ def main():
                     module.exit_json(changed=True, app=name)
 
                 app_remove(app=name, purge=module.params["purge"])
-                module.exit_json(changed=True, app=name)
+                module.exit_json(
+                    changed=True,
+                    app=name,
+                    diff=build_diff(
+                        {"app": name, "state": "present"},
+                        {"app": name, "state": "absent"},
+                        header="yunohost app: %s" % name,
+                    ),
+                )
 
             # --- state=present ---
             if state == "present":
@@ -281,7 +290,14 @@ def main():
                         module.exit_json(changed=False, app=name, app_info=current)
 
                     info = app_info(name, full=True)
-                    module.exit_json(changed=True, app=name, app_info=info)
+                    module.exit_json(
+                        changed=True,
+                        app=name,
+                        app_info=info,
+                        diff=build_diff(
+                            current, info, header="yunohost app: %s" % name
+                        ),
+                    )
 
                 if module.check_mode:
                     module.exit_json(changed=True, app=name)
@@ -289,7 +305,20 @@ def main():
                 _do_install(module, app_install)
 
                 info = app_info(name, full=True)
-                module.exit_json(changed=True, app=name, app_info=info)
+                module.exit_json(
+                    changed=True,
+                    app=name,
+                    app_info=info,
+                    diff=build_diff(
+                        {"state": "absent"},
+                        {
+                            "state": "present",
+                            "id": name,
+                            "version": info.get("version", ""),
+                        },
+                        header="yunohost app: %s" % name,
+                    ),
+                )
 
             # --- state=latest ---
             if state == "latest":

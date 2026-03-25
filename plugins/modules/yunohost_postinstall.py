@@ -105,6 +105,7 @@ import os
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -173,6 +174,11 @@ def main():
             installed=True,
             domain=domain,
             username=username,
+            diff=build_diff(
+                {"installed": False},
+                {"installed": True, "domain": domain, "username": username},
+                header="yunohost postinstall",
+            ),
         )
 
     except Exception as e:

@@ -71,3 +71,31 @@ def check_yunohost(module):
             msg="This module must run on a YunoHost server "
             "with the yunohost package installed."
         )
+
+
+def build_diff(before, after, header=""):
+    """Build a diff dict for Ansible's --diff output.
+
+    Args:
+        before: State before the change (dict, list, or string).
+        after: State after the change (dict, list, or string).
+        header: Optional header for the diff (e.g. resource name).
+
+    Returns:
+        A dict suitable for the ``diff`` parameter of ``exit_json``.
+    """
+    import json
+
+    def _serialize(obj):
+        if isinstance(obj, (dict, list)):
+            return json.dumps(obj, indent=2, sort_keys=True, default=str) + "\n"
+        return str(obj) + "\n"
+
+    result = {
+        "before": _serialize(before),
+        "after": _serialize(after),
+    }
+    if header:
+        result["before_header"] = header
+        result["after_header"] = header
+    return result
