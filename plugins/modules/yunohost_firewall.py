@@ -218,7 +218,11 @@ def main():
             lock.release()
 
     except Exception as e:
-        module.fail_json(msg=str(e), port=port, protocol=protocol)
+        import traceback
+
+        module.fail_json(
+            msg="%s\n%s" % (e, traceback.format_exc()), port=port, protocol=protocol
+        )
 
 
 if __name__ == "__main__":
