@@ -6,6 +6,7 @@
 
 ## 🚀 New Features
 
+- Enrich diff mode on modules [\#15](https://github.com/plopoyop/ansible-collection-yunohost/pull/15) ([plopoyop](https://github.com/plopoyop))
 - Introduce renovate [\#6](https://github.com/plopoyop/ansible-collection-yunohost/pull/6) ([plopoyop](https://github.com/plopoyop))
 - Add role configure Yunohost [\#5](https://github.com/plopoyop/ansible-collection-yunohost/pull/5) ([plopoyop](https://github.com/plopoyop))
 - Add role yunohost install [\#4](https://github.com/plopoyop/ansible-collection-yunohost/pull/4) ([plopoyop](https://github.com/plopoyop))
