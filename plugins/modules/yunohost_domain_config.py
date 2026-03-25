@@ -101,6 +101,7 @@ skipped_settings:
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -215,6 +216,11 @@ def main():
                 domain=name,
                 changed_settings=changed_settings,
                 current_settings=final,
+                diff=build_diff(
+                    {k: v["before"] for k, v in changed_settings.items()},
+                    {k: v["after"] for k, v in changed_settings.items()},
+                    header="domain config: %s" % name,
+                ),
                 **result_extra,
             )
 

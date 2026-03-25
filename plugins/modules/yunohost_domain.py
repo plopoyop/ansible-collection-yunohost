@@ -110,6 +110,7 @@ main:
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -201,11 +202,21 @@ def main():
                     changed = True
 
             result = domain_list()
+            diff = (
+                build_diff(
+                    {"domains": current["domains"], "main": current["main"]},
+                    {"domains": result["domains"], "main": result["main"]},
+                    header="yunohost domains",
+                )
+                if changed
+                else {}
+            )
             module.exit_json(
                 changed=changed,
                 domain=name,
                 domains=result["domains"],
                 main=result["main"],
+                diff=diff,
             )
 
         finally:

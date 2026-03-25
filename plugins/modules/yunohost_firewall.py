@@ -115,6 +115,7 @@ opened:
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -175,6 +176,7 @@ def main():
         from yunohost.firewall import firewall_close, firewall_list, firewall_open
 
         try:
+            before_ports = _get_open_ports(firewall_list)
             changed = False
 
             for proto in protocols:
@@ -207,11 +209,21 @@ def main():
 
             opened = _get_open_ports(firewall_list) if not module.check_mode else {}
 
+            diff = (
+                build_diff(
+                    before_ports,
+                    opened,
+                    header="yunohost firewall",
+                )
+                if changed and opened
+                else {}
+            )
             module.exit_json(
                 changed=changed,
                 port=port,
                 protocol=protocol,
                 opened=opened,
+                diff=diff,
             )
 
         finally:

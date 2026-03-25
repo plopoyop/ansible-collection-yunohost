@@ -108,6 +108,7 @@ changed_details:
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -199,6 +200,11 @@ def main():
                 permission=name,
                 allowed=sorted(result.get("allowed", [])),
                 changed_details={"added": to_add, "removed": to_remove},
+                diff=build_diff(
+                    {"allowed": current_allowed},
+                    {"allowed": sorted(result.get("allowed", []))},
+                    header="yunohost permission: %s" % name,
+                ),
             )
 
         finally:

@@ -143,6 +143,7 @@ user_info:
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.plopoyop.yunohost.plugins.module_utils.yunohost import (
+    build_diff,
     check_yunohost,
     init_yunohost,
 )
@@ -264,7 +265,15 @@ def main():
                 if module.check_mode:
                     module.exit_json(changed=True, user=username)
                 user_delete(username=username, purge=module.params["purge"])
-                module.exit_json(changed=True, user=username)
+                module.exit_json(
+                    changed=True,
+                    user=username,
+                    diff=build_diff(
+                        {"user": username, "state": "present"},
+                        {"user": username, "state": "absent"},
+                        header="yunohost user: %s" % username,
+                    ),
+                )
 
             # state == present
             if not exists:
@@ -305,7 +314,16 @@ def main():
                     user_update(username=username, **update_kwargs)
 
                 info = user_info(username)
-                module.exit_json(changed=True, user=username, user_info=info)
+                module.exit_json(
+                    changed=True,
+                    user=username,
+                    user_info=info,
+                    diff=build_diff(
+                        {"state": "absent"},
+                        info,
+                        header="yunohost user: %s" % username,
+                    ),
+                )
 
             # User exists — compute updates
             current = user_info(username)
@@ -318,7 +336,12 @@ def main():
 
             user_update(username=username, **updates)
             info = user_info(username)
-            module.exit_json(changed=True, user=username, user_info=info)
+            module.exit_json(
+                changed=True,
+                user=username,
+                user_info=info,
+                diff=build_diff(current, info, header="yunohost user: %s" % username),
+            )
 
         finally:
             lock.release()
