@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update podman \(5.8.0 → 5.8.1\) [\#9](https://github.com/plopoyop/ansible-collection-yunohost/pull/9) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update ansible-doctor \(8.2.1 → 8.2.2\) [\#8](https://github.com/plopoyop/ansible-collection-yunohost/pull/8) ([plopoyop](https://github.com/plopoyop))
 
 
