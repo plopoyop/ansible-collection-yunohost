@@ -13,6 +13,10 @@
 - Create Yunohost modules [\#2](https://github.com/plopoyop/ansible-collection-yunohost/pull/2) ([plopoyop](https://github.com/plopoyop))
 - Init collection and add tooling [\#1](https://github.com/plopoyop/ansible-collection-yunohost/pull/1) ([plopoyop](https://github.com/plopoyop))
 
+## 🐛 Bug Fixes
+
+- Missing traceback [\#14](https://github.com/plopoyop/ansible-collection-yunohost/pull/14) ([plopoyop](https://github.com/plopoyop))
+
 ## ⚙️ Dependencies
 
 - feat\(ci\): update jetify-com/devbox-install-action action \(v0.14.0 → v0.15.0\) [\#13](https://github.com/plopoyop/ansible-collection-yunohost/pull/13) ([plopoyop](https://github.com/plopoyop))
