@@ -16,6 +16,7 @@
 ## ⚙️ Dependencies
 
 - feat\(ci\): update jetify-com/devbox-install-action action \(v0.14.0 → v0.15.0\) [\#13](https://github.com/plopoyop/ansible-collection-yunohost/pull/13) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.4 → v0.15.7\) [\#10](https://github.com/plopoyop/ansible-collection-yunohost/pull/10) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.3 → v46.1.5\) [\#7](https://github.com/plopoyop/ansible-collection-yunohost/pull/7) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
