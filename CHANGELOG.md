@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-03-26)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
+
+**Merged pull requests:**
+
+- fix\(ci\): update renovatebot/github-action action \(v46.1.5 → v46.1.6\) [\#16](https://github.com/plopoyop/ansible-collection-yunohost/pull/16) ([plopoyop](https://github.com/plopoyop))
+
 ## [1.0.0](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.0) (2026-03-25)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/6d388eea414c2330305028cf8ae7628415fa5f03...1.0.0)
