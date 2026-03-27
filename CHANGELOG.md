@@ -7,6 +7,7 @@
 ## ⚙️ Dependencies
 
 - fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.7 → v0.15.8\) [\#21](https://github.com/plopoyop/ansible-collection-yunohost/pull/21) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.1.1 → v26.3.0\) [\#17](https://github.com/plopoyop/ansible-collection-yunohost/pull/17) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
 
