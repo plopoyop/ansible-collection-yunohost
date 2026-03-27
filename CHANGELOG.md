@@ -1,8 +1,12 @@
 # Changelog
 
-## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-03-26)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-03-27)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
+
+## ⚙️ Dependencies
+
+- fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.7 → v0.15.8\) [\#21](https://github.com/plopoyop/ansible-collection-yunohost/pull/21) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
 
