@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/plopoyop/ansible-collection-yunohost/tree/HEAD)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-03-30)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...HEAD)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
 
 ## ⚙️ Dependencies
 
@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\)!: Update python313Packages.pytest \(8.3.5 → 9.0.2\) [\#19](https://github.com/plopoyop/ansible-collection-yunohost/pull/19) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.5 → v46.1.6\) [\#16](https://github.com/plopoyop/ansible-collection-yunohost/pull/16) ([plopoyop](https://github.com/plopoyop))
 
 ## [1.0.0](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.0) (2026-03-25)
