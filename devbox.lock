@@ -625,83 +625,83 @@
         }
       }
     },
-    "python313Packages.pytest@8.3.5": {
-      "last_modified": "2025-08-12T09:17:37Z",
-      "resolved": "github:NixOS/nixpkgs/372d9eeeafa5b15913201e2b92e8e539ac7c64d1#python313Packages.pytest",
+    "python313Packages.pytest@9.0.2": {
+      "last_modified": "2026-03-23T05:26:49Z",
+      "resolved": "github:NixOS/nixpkgs/4724d5647207377bede08da3212f809cbd94a648#python313Packages.pytest",
       "source": "devbox-search",
-      "version": "8.3.5",
+      "version": "9.0.2",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/s8fyrhxln9cds1fckd37vazh5xfpknhi-python3.13-pytest-8.3.5",
+              "path": "/nix/store/0xm2ndxjgabk4h0j78xix5grswigdk0q-python3.13-pytest-9.0.2",
               "default": true
             },
             {
-              "name": "testout",
-              "path": "/nix/store/n818v53vj5xkxzklhq06valaa337nb9g-python3.13-pytest-8.3.5-testout"
+              "name": "dist",
+              "path": "/nix/store/819ggkpdvin9y4akljvll2ws1b1hlpvh-python3.13-pytest-9.0.2-dist"
             },
             {
-              "name": "dist",
-              "path": "/nix/store/1dkkcf6b5iihyqlc52y23j227xilkgaz-python3.13-pytest-8.3.5-dist"
+              "name": "testout",
+              "path": "/nix/store/l3vncf0rgcw49nzc8vhnm37f30f08335-python3.13-pytest-9.0.2-testout"
             }
           ],
-          "store_path": "/nix/store/s8fyrhxln9cds1fckd37vazh5xfpknhi-python3.13-pytest-8.3.5"
+          "store_path": "/nix/store/0xm2ndxjgabk4h0j78xix5grswigdk0q-python3.13-pytest-9.0.2"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/kmyxbspnal8zpwvq2l2njhrv7l5ypk4b-python3.13-pytest-8.3.5",
+              "path": "/nix/store/wfqvyiddshyd4776imk2qa3yfaswbx1y-python3.13-pytest-9.0.2",
               "default": true
             },
             {
               "name": "testout",
-              "path": "/nix/store/lhzzbqfnzp4m23svc796nl8x1rdfrss9-python3.13-pytest-8.3.5-testout"
+              "path": "/nix/store/jin75phhpy12kszhz758zm6l37d4cnbq-python3.13-pytest-9.0.2-testout"
             },
             {
               "name": "dist",
-              "path": "/nix/store/2hs6pfdfl5j8zg5ra6fwalzrpgb2nmw1-python3.13-pytest-8.3.5-dist"
+              "path": "/nix/store/v6hdml06rwj6ry77xnva6wdyn0g2dar5-python3.13-pytest-9.0.2-dist"
             }
           ],
-          "store_path": "/nix/store/kmyxbspnal8zpwvq2l2njhrv7l5ypk4b-python3.13-pytest-8.3.5"
+          "store_path": "/nix/store/wfqvyiddshyd4776imk2qa3yfaswbx1y-python3.13-pytest-9.0.2"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/yg255zhf3pfwrljqmy430804wri7a2b1-python3.13-pytest-8.3.5",
+              "path": "/nix/store/zgssf2rq8g0dbqj1lfyfs87l6ipfjyl4-python3.13-pytest-9.0.2",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/s6kybyhk98cabasx6vbajqb6k5ha1r1c-python3.13-pytest-8.3.5-dist"
+              "path": "/nix/store/nb3nziy105kirbizkbyfxj6b7np3q1ak-python3.13-pytest-9.0.2-dist"
             },
             {
               "name": "testout",
-              "path": "/nix/store/z97x0ym05ixg5mv6qdazn5dn98cvymmp-python3.13-pytest-8.3.5-testout"
+              "path": "/nix/store/flvyhwbwsm9p72izqmylsqpd7lhk8vaf-python3.13-pytest-9.0.2-testout"
             }
           ],
-          "store_path": "/nix/store/yg255zhf3pfwrljqmy430804wri7a2b1-python3.13-pytest-8.3.5"
+          "store_path": "/nix/store/zgssf2rq8g0dbqj1lfyfs87l6ipfjyl4-python3.13-pytest-9.0.2"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/irg9b8cr3rxqkmgvalddzh5ps6lxzva3-python3.13-pytest-8.3.5",
+              "path": "/nix/store/0wnscii4625qqnngfh93mw44lxq5w5b2-python3.13-pytest-9.0.2",
               "default": true
             },
             {
-              "name": "testout",
-              "path": "/nix/store/10gx6jxy4g68jdkmw781rzq2hif9imij-python3.13-pytest-8.3.5-testout"
+              "name": "dist",
+              "path": "/nix/store/kqkqlbhm13k2449hprbhx27chgj4xcpa-python3.13-pytest-9.0.2-dist"
             },
             {
-              "name": "dist",
-              "path": "/nix/store/pdhr9spicksfgmg0rdv08dqsryqv9pah-python3.13-pytest-8.3.5-dist"
+              "name": "testout",
+              "path": "/nix/store/g99vmwklkfs3q57fa76jsag2qai7y3b9-python3.13-pytest-9.0.2-testout"
             }
           ],
-          "store_path": "/nix/store/irg9b8cr3rxqkmgvalddzh5ps6lxzva3-python3.13-pytest-8.3.5"
+          "store_path": "/nix/store/0wnscii4625qqnngfh93mw44lxq5w5b2-python3.13-pytest-9.0.2"
         }
       }
     },
