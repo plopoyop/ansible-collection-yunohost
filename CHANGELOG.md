@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\)!: Update python313Packages.pytest-ansible \(25.12.0 → 26.2.0\) [\#20](https://github.com/plopoyop/ansible-collection-yunohost/pull/20) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update python313Packages.pytest \(8.3.5 → 9.0.2\) [\#19](https://github.com/plopoyop/ansible-collection-yunohost/pull/19) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.5 → v46.1.6\) [\#16](https://github.com/plopoyop/ansible-collection-yunohost/pull/16) ([plopoyop](https://github.com/plopoyop))
 
