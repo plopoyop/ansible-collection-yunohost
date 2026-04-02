@@ -6,6 +6,7 @@
 
 ## ⚙️ Dependencies
 
+- feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.3.0 → v26.4.0\) [\#25](https://github.com/plopoyop/ansible-collection-yunohost/pull/25) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.6 → v46.1.7\) [\#23](https://github.com/plopoyop/ansible-collection-yunohost/pull/23) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update hugo19941994/delete-draft-releases action \(v2.0.0 → v3.0.0\) [\#22](https://github.com/plopoyop/ansible-collection-yunohost/pull/22) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.7 → v0.15.8\) [\#21](https://github.com/plopoyop/ansible-collection-yunohost/pull/21) ([plopoyop](https://github.com/plopoyop))
@@ -13,6 +14,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update python313packages.ruff \(0.15.6 → 0.15.7\) [\#24](https://github.com/plopoyop/ansible-collection-yunohost/pull/24) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update python313Packages.pytest-ansible \(25.12.0 → 26.2.0\) [\#20](https://github.com/plopoyop/ansible-collection-yunohost/pull/20) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update python313Packages.pytest \(8.3.5 → 9.0.2\) [\#19](https://github.com/plopoyop/ansible-collection-yunohost/pull/19) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.5 → v46.1.6\) [\#16](https://github.com/plopoyop/ansible-collection-yunohost/pull/16) ([plopoyop](https://github.com/plopoyop))
