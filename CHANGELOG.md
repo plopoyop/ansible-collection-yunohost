@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-04-12)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-04-16)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
 
 ## ⚙️ Dependencies
 
+- fix\(ci\): update renovatebot/github-action action \(v46.1.8 → v46.1.9\) [\#35](https://github.com/plopoyop/ansible-collection-yunohost/pull/35) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update softprops/action-gh-release action \(v2 → v3\) [\#34](https://github.com/plopoyop/ansible-collection-yunohost/pull/34) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.9 → v0.15.10\) [\#33](https://github.com/plopoyop/ansible-collection-yunohost/pull/33) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.7 → v46.1.8\) [\#27](https://github.com/plopoyop/ansible-collection-yunohost/pull/27) ([plopoyop](https://github.com/plopoyop))
