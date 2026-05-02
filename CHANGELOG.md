@@ -8,6 +8,7 @@
 
 - fix\(ci\): update renovatebot/github-action action \(v46.1.11 → v46.1.12\) [\#43](https://github.com/plopoyop/ansible-collection-yunohost/pull/43) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.10 → v46.1.11\) [\#41](https://github.com/plopoyop/ansible-collection-yunohost/pull/41) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.11 → v0.15.12\) [\#40](https://github.com/plopoyop/ansible-collection-yunohost/pull/40) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.9 → v46.1.10\) [\#39](https://github.com/plopoyop/ansible-collection-yunohost/pull/39) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.10 → v0.15.11\) [\#36](https://github.com/plopoyop/ansible-collection-yunohost/pull/36) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.8 → v46.1.9\) [\#35](https://github.com/plopoyop/ansible-collection-yunohost/pull/35) ([plopoyop](https://github.com/plopoyop))
