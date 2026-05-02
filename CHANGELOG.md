@@ -23,6 +23,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update prek \(0.3.8 → 0.3.9\) [\#37](https://github.com/plopoyop/ansible-collection-yunohost/pull/37) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.pytest-ansible \(26.2.0 → 26.4.0\) [\#32](https://github.com/plopoyop/ansible-collection-yunohost/pull/32) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.ansible \(13.3.0 → 13.5.0\) [\#31](https://github.com/plopoyop/ansible-collection-yunohost/pull/31) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update ansible-doctor \(8.2.2 → 8.3.0\) [\#30](https://github.com/plopoyop/ansible-collection-yunohost/pull/30) ([plopoyop](https://github.com/plopoyop))
