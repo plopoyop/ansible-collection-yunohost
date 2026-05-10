@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-05-07)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-05-10)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
 
@@ -25,6 +25,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update prek \(0.3.10 → 0.3.11\) [\#48](https://github.com/plopoyop/ansible-collection-yunohost/pull/48) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update python313packages.ruff \(0.15.10 → 0.15.12\) [\#46](https://github.com/plopoyop/ansible-collection-yunohost/pull/46) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.3.9 → 0.3.10\) [\#45](https://github.com/plopoyop/ansible-collection-yunohost/pull/45) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update podman \(5.8.1 → 5.8.2\) [\#44](https://github.com/plopoyop/ansible-collection-yunohost/pull/44) ([plopoyop](https://github.com/plopoyop))
