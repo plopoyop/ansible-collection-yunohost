@@ -28,6 +28,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update python313packages.ruff \(0.15.12 → 0.15.13\) [\#52](https://github.com/plopoyop/ansible-collection-yunohost/pull/52) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.3.10 → 0.3.11\) [\#48](https://github.com/plopoyop/ansible-collection-yunohost/pull/48) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update python313packages.ruff \(0.15.10 → 0.15.12\) [\#46](https://github.com/plopoyop/ansible-collection-yunohost/pull/46) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.3.9 → 0.3.10\) [\#45](https://github.com/plopoyop/ansible-collection-yunohost/pull/45) ([plopoyop](https://github.com/plopoyop))
