@@ -31,6 +31,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update python313packages.ansible \(13.6.0 → 13.7.0\) [\#62](https://github.com/plopoyop/ansible-collection-yunohost/pull/62) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update python313packages.ruff \(0.15.14 → 0.15.15\) [\#61](https://github.com/plopoyop/ansible-collection-yunohost/pull/61) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.ansible \(13.5.0 → 13.6.0\) [\#58](https://github.com/plopoyop/ansible-collection-yunohost/pull/58) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update git \(2.53.0 → 2.54.0\) [\#57](https://github.com/plopoyop/ansible-collection-yunohost/pull/57) ([plopoyop](https://github.com/plopoyop))
