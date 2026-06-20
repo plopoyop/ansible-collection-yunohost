@@ -33,6 +33,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update python313packages.ruff \(0.15.15 → 0.15.16\) [\#66](https://github.com/plopoyop/ansible-collection-yunohost/pull/66) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update python313Packages.molecule-plugins \(23.5.3 → 25.8.12\) [\#63](https://github.com/plopoyop/ansible-collection-yunohost/pull/63) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.ansible \(13.6.0 → 13.7.0\) [\#62](https://github.com/plopoyop/ansible-collection-yunohost/pull/62) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update python313packages.ruff \(0.15.14 → 0.15.15\) [\#61](https://github.com/plopoyop/ansible-collection-yunohost/pull/61) ([plopoyop](https://github.com/plopoyop))
