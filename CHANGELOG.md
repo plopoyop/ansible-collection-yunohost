@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-06-12)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-06-20)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
 
 ## ⚙️ Dependencies
 
+- fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.15 → v0.15.17\) [\#60](https://github.com/plopoyop/ansible-collection-yunohost/pull/60) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.14 → v46.1.15\) [\#59](https://github.com/plopoyop/ansible-collection-yunohost/pull/59) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.14 → v0.15.15\) [\#54](https://github.com/plopoyop/ansible-collection-yunohost/pull/54) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook astral-sh/ruff-pre-commit \(v0.15.13 → v0.15.14\) [\#53](https://github.com/plopoyop/ansible-collection-yunohost/pull/53) ([plopoyop](https://github.com/plopoyop))
@@ -30,6 +31,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update python313packages.ruff \(0.15.14 → 0.15.15\) [\#61](https://github.com/plopoyop/ansible-collection-yunohost/pull/61) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.ansible \(13.5.0 → 13.6.0\) [\#58](https://github.com/plopoyop/ansible-collection-yunohost/pull/58) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update git \(2.53.0 → 2.54.0\) [\#57](https://github.com/plopoyop/ansible-collection-yunohost/pull/57) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update python313packages.ruff \(0.15.13 → 0.15.14\) [\#56](https://github.com/plopoyop/ansible-collection-yunohost/pull/56) ([plopoyop](https://github.com/plopoyop))
