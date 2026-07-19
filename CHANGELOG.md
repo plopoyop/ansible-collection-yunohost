@@ -39,6 +39,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update python313packages.pytest-ansible \(26.4.0 → 26.6.0\) [\#79](https://github.com/plopoyop/ansible-collection-yunohost/pull/79) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update prek \(0.3.11 → 0.4.4\) [\#78](https://github.com/plopoyop/ansible-collection-yunohost/pull/78) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.molecule \(26.4.0 → 26.6.0\) [\#76](https://github.com/plopoyop/ansible-collection-yunohost/pull/76) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update python313Packages.ansible \(13.7.0 → 14.0.0\) [\#73](https://github.com/plopoyop/ansible-collection-yunohost/pull/73) ([plopoyop](https://github.com/plopoyop))
