@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-10-16)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-10-22)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
 
 ## ⚙️ Dependencies
 
+- fix\(ci\): update renovatebot/github-action action \(v46.3.8 → v46.3.9\) [\#109](https://github.com/plopoyop/ansible-collection-yunohost/pull/109) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.3.7 → v46.3.8\) [\#107](https://github.com/plopoyop/ansible-collection-yunohost/pull/107) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.3.6 → v46.3.7\) [\#106](https://github.com/plopoyop/ansible-collection-yunohost/pull/106) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.3.5 → v46.3.6\) [\#105](https://github.com/plopoyop/ansible-collection-yunohost/pull/105) ([plopoyop](https://github.com/plopoyop))
