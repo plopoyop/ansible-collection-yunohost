@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-11-19)
+## [1.0.1](https://github.com/plopoyop/ansible-collection-yunohost/tree/1.0.1) (2026-11-22)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-yunohost/compare/1.0.0...1.0.1)
 
@@ -63,6 +63,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update yamllint \(1.37.1 → 1.38.0\) [\#117](https://github.com/plopoyop/ansible-collection-yunohost/pull/117) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.pytest-ansible \(26.4.0 → 26.6.0\) [\#79](https://github.com/plopoyop/ansible-collection-yunohost/pull/79) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update prek \(0.3.11 → 0.4.4\) [\#78](https://github.com/plopoyop/ansible-collection-yunohost/pull/78) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.molecule \(26.4.0 → 26.6.0\) [\#76](https://github.com/plopoyop/ansible-collection-yunohost/pull/76) ([plopoyop](https://github.com/plopoyop))
